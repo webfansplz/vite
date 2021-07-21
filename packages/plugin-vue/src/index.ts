@@ -9,6 +9,7 @@ try {
 
 import fs from 'fs'
 import { Plugin, ViteDevServer } from 'vite'
+import { SourceMapInput } from 'rollup'
 import { createFilter } from '@rollup/pluginutils'
 import {
   SFCBlock,
@@ -130,7 +131,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin {
         if (block) {
           return {
             code: block.content,
-            map: block.map as any
+            map: block.map as SourceMapInput
           }
         }
       }

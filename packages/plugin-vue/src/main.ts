@@ -9,6 +9,7 @@ import {
 } from './utils/descriptorCache'
 import { PluginContext, SourceMap, TransformPluginContext } from 'rollup'
 import { normalizePath } from '@rollup/pluginutils'
+import { SourceMapInput } from 'rollup'
 import { resolveScript } from './script'
 import { transformTemplateInMain } from './template'
 import { isOnlyTemplateChanged, isEqualBlock } from './handleHotUpdate'
@@ -236,10 +237,10 @@ async function genScriptCode(
   ssr: boolean
 ): Promise<{
   code: string
-  map: RawSourceMap
+  map: SourceMapInput
 }> {
   let scriptCode = `const _sfc_main = {}`
-  let map: RawSourceMap | SourceMap | undefined
+  let map: SourceMapInput | SourceMap | undefined
 
   const script = resolveScript(descriptor, options, ssr)
   if (script) {
@@ -278,7 +279,7 @@ async function genScriptCode(
   }
   return {
     code: scriptCode,
-    map: map as any
+    map: map as SourceMapInput
   }
 }
 

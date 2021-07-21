@@ -5,7 +5,7 @@ import {
   SFCDescriptor,
   SFCTemplateCompileOptions
 } from '@vue/compiler-sfc'
-import { PluginContext, TransformPluginContext } from 'rollup'
+import { PluginContext, TransformPluginContext, SourceMapInput } from 'rollup'
 import { ResolvedOptions } from '.'
 import { getResolvedScript } from './script'
 import { createRollupError } from './utils/error'
@@ -34,7 +34,7 @@ export function transformTemplateAsModule(
 
   return {
     code: returnCode,
-    map: result.map as any
+    map: result.map as SourceMapInput
   }
 }
 

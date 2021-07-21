@@ -1,5 +1,5 @@
 import { compileStyleAsync, SFCDescriptor } from '@vue/compiler-sfc'
-import { TransformPluginContext } from 'rollup'
+import { TransformPluginContext, SourceMapInput } from 'rollup'
 import { ResolvedOptions } from '.'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -38,6 +38,6 @@ export async function transformStyle(
 
   return {
     code: result.code,
-    map: result.map || ({ mappings: '' } as any)
+    map: (result.map || { mappings: '' }) as SourceMapInput
   }
 }
