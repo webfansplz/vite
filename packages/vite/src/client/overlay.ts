@@ -182,4 +182,6 @@ export class ErrorOverlay extends HTMLElement {
 }
 
 export const overlayId = 'vite-error-overlay'
-customElements.define(overlayId, ErrorOverlay)
+if (!customElements.get(overlayId)) {
+  customElements.define(overlayId, ErrorOverlay)
+}
